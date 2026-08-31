@@ -1,0 +1,26 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Visual Studio Code
+.vscode/
+
+# Java / Maven
+backend/target/
+
+# Node.js / Vite
+frontend/**/node_modules/
+frontend/**/dist/
+
+# Local environment files
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
