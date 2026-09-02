@@ -1,11 +1,46 @@
 # CupQueue
 
-CupQueue is a coffee ordering and pickup queue management platform.
+CupQueue is a Canadian coffee-shop order-ahead and pickup-queue project. It is being built as a portfolio-ready, single-store MVP with separate merchant and customer experiences.
 
-## Repository Structure
+## Repository structure
 
-- `frontend/` — merchant and customer web applications
-- `backend/` — Spring Boot backend application
-- `docs/` — architecture, API, database, and deployment documentation
-- `.github/workflows/` — continuous integration and deployment workflows
+```text
+cup-queue/
+├── backend/                  Spring Boot REST API
+├── frontend/
+│   ├── merchant-web/         Merchant management application
+│   └── customer-web/         Mobile-first customer application
+├── docs/                     Architecture and development notes
+├── .github/workflows/        GitHub Actions CI
+└── compose.yml               Local PostgreSQL
+```
 
+## Technology stack
+
+- Backend: Java 21, Spring Boot 4.0.8, Spring Security, JPA, Flyway
+- Data: PostgreSQL 17
+- Frontend: React, TypeScript, Vite
+- Delivery: Docker and GitHub Actions
+
+## Run locally
+
+Start PostgreSQL:
+
+```powershell
+Copy-Item .env.example .env
+docker compose up -d --wait
+```
+
+Run the Spring Boot application from IntelliJ IDEA. Then start either frontend from VS Code:
+
+```powershell
+cd frontend/merchant-web
+npm install
+npm run dev
+```
+
+See [local development](docs/local-development.md) for both applications and see [architecture](docs/architecture.md) for the design rationale.
+
+## Current status
+
+Day 1 foundation: project structure, local infrastructure, database migration, Docker image definition, and CI workflow.
