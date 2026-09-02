@@ -3,9 +3,11 @@ package com.cupqueue;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
+import org.springframework.test.web.servlet.MockMvc;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.postgresql.PostgreSQLContainer;
@@ -16,8 +18,12 @@ import java.time.OffsetDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
+@AutoConfigureMockMvc
 @Testcontainers
 class CupQueueApplicationTests {
 
@@ -37,8 +43,20 @@ class CupQueueApplicationTests {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
+    @Autowired
+    MockMvc mockMvc;
+
     @Test
     void contextLoads() {
+    }
+
+    @Test
+    void publishesOpenApiDocument() throws Exception {
+        mockMvc.perform(get("/v3/api-docs"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.openapi").value("3.1.0"))
+                .andExpect(jsonPath("$.info.title").value("CupQueue API"))
+                .andExpect(jsonPath("$.info.version").value("v1"));
     }
 
     @Test

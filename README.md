@@ -39,7 +39,10 @@ npm install
 npm run dev
 ```
 
-See [local development](docs/local-development.md) for both applications and see [architecture](docs/architecture.md) for the design rationale.
+See [local development](docs/local-development.md) for both applications,
+[API development](docs/api-development.md) for generated OpenAPI documentation,
+[architecture](docs/architecture.md) for the design rationale,
+and the [database schema](docs/database-schema.md) for table definitions and constraints.
 
 ## Current status
 

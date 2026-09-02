@@ -1,2 +1,4 @@
-/** Products, categories, prices, and availability. */
+/**
+ * Provides product, category, pricing, and availability capabilities.
+ */
 package com.cupqueue.catalog;

@@ -26,6 +26,14 @@ Open `backend` in IntelliJ IDEA and run `CupQueueApplication`. Flyway automatica
 
 Health endpoint: `http://localhost:8080/actuator/health`
 
+Generated API documentation:
+
+- Swagger UI: `http://localhost:8080/swagger-ui.html`
+- OpenAPI JSON: `http://localhost:8080/v3/api-docs`
+- OpenAPI YAML: `http://localhost:8080/v3/api-docs.yaml`
+
+See [API development](api-development.md) for the controller and DTO documentation workflow.
+
 The initial security configuration is intentionally open so the end-to-end development flow works before authentication is implemented. It disables sessions and CSRF, explicitly exposes the actuator health endpoints, and currently permits all API requests. Replace the final permit-all rule with authenticated JWT authorization before deployment.
 
 ## Run backend tests

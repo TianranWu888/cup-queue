@@ -26,3 +26,24 @@ management:
     health:
       probes:
         enabled: true
+
+springdoc:
+  api-docs:
+    enabled: ${SPRINGDOC_ENABLED:true}
+    path: /v3/api-docs
+  packages-to-scan: com.cupqueue
+  swagger-ui:
+    enabled: ${SPRINGDOC_ENABLED:true}
+    path: /swagger-ui.html
+    operations-sorter: method
+    tags-sorter: alpha
+    try-it-out-enabled: true
+
+logging:
+  level:
+    root: INFO
+    com.cupqueue: INFO
+    org.hibernate.SQL: WARN
+    org.hibernate.orm.jdbc.bind: WARN
+  pattern:
+    correlation: "%X{requestId:-} "
